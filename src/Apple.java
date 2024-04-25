@@ -13,7 +13,7 @@ public class Apple {
     public void draw(Graphics g){
         g.setColor(Color.RED);
         //g.drawImage(,x,y,new ImageObserver)  //make it an actual thing later
-        g.fillOval(x,y,5,5);
+        g.fillOval(x,y,40,40);
     }
 
     public void move(){
