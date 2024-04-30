@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,6 +9,25 @@ public class Main {
         frame.setVisible(true);
         frame.setSize(700,700);
         frame.add(panel);
+
+
+        frame.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                //System.out.println(key);
+                panel.keySnake(key);
+
+            }
+
+        });
+
+
+
+
+
+
 
 
 
@@ -22,22 +40,15 @@ public class Main {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
-
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
-
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
-
             }
         }); // end of just returning click cords
 

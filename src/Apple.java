@@ -17,9 +17,15 @@ public class Apple {
     }
 
     public void move(){
-        x = (int)(Math.random()*100);
-        y = (int)(Math.random()*100);
+        int tempx;
+        int tempy;
+        tempx = (int)(Math.random()*10 + 1);
+        tempy = (int)(Math.random()*10 + 1);
+        x = MyPanel.BOXLENGTH*tempx + MyPanel.XSTART;
+        y = MyPanel.BOXLENGTH*tempy + MyPanel.YSTART;
+
     }
+
 
     public int getX(){
         return x;

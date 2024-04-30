@@ -20,11 +20,11 @@ public class Snake {
     }
 
     public void keyUp(){
-        ySpeed = 5;
+        ySpeed = -5;
         xSpeed = 0;
     }
     public void keyDown(){
-        ySpeed = -5;
+        ySpeed = 5;
         xSpeed = 0;
     }
     public void keyLeft(){
@@ -39,9 +39,19 @@ public class Snake {
     public void move(){
         x += xSpeed;
         y += ySpeed;
-
     }
 
+    public void stop(){
+        xSpeed = 0;
+        ySpeed = 0;
+    }
+
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
 
 
 }
