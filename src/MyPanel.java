@@ -3,11 +3,14 @@ import java.awt.*;
 import java.awt.event.KeyListener;
 
 public class MyPanel extends JPanel {
+    boolean play = true;
 
+
+    private int speed = 20;
     public static final int XSTART = 90;
     public static final int YSTART = 80;
     public static final int BOXLENGTH = 50;
-
+    private int numBar = 0;
     private int score = 0;
 
     Apple apple = new Apple(XSTART + BOXLENGTH * 7,YSTART + BOXLENGTH * 5);
@@ -56,36 +59,43 @@ public class MyPanel extends JPanel {
         }
 
 
-        apple.draw(g);
-        snake.move();
-        snake.draw(g);
+            apple.draw(g);
+            snake.move();
+            snake.draw(g);
 
-        if(Math.abs(snake.getX() - apple.getX()) <= 30 && Math.abs(snake.getY() - apple.getY()) <= 30){
-            score ++;
-            apple.move();
-            g.drawString("Score: " + score,20,30);
-        }
 
-        if(snake.getX() <= XSTART - 5 || snake.getY() <= YSTART - 5 || snake.getX() >= (XSTART + BOXLENGTH*11) - 35|| snake.getY()>= (YSTART + BOXLENGTH*11) - 35){
-            snake.stop();
-            g.setColor(Color.WHITE);
-            g.fillRect(250,250,200,200);
-            g.setColor(Color.RED);
-            if(highScore <= score){
-                highScore = score;
+            if (Math.abs(snake.getX() - apple.getX()) <= 30 && Math.abs(snake.getY() - apple.getY()) <= 30) {
+                score++;
+                apple.move();
+                if(speed-1 > 1)
+                speed --;
+
+                g.drawString("Score: " + score, 20, 30);
+                numBar ++;
             }
-            g.drawString("You Lose",300,300);
-            g.drawString("High Score:" + highScore,300,350);
-            score = 0;
-        }
 
-        g.setColor(Color.WHITE);
-        g.drawString("Score: " + score,20,30);
+
+            if (snake.getX() <= XSTART - 5 || snake.getY() <= YSTART - 5 || snake.getX() >= (XSTART + BOXLENGTH * 11) - 35 || snake.getY() >= (YSTART + BOXLENGTH * 11) - 35) {
+                snake.stop();
+                g.setColor(Color.WHITE);
+                g.fillRect(250, 250, 200, 200);
+                g.setColor(Color.RED);
+                if (highScore <= score) {
+                    highScore = score;
+                }
+                g.drawString("You Lose", 300, 300);
+                g.drawString("Score:" + highScore, 300, 350);
+                score = 0;
+            }
+
+
+            g.setColor(Color.WHITE);
+            g.drawString("Score: " + score, 20, 30);
 
 
 
         try {
-            Thread.sleep(20);
+            Thread.sleep(speed);
         }
         catch(Exception e) {
             System.out.println(e);

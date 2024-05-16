@@ -1,17 +1,20 @@
 import java.awt.*;
+import java.util.ArrayList;
 
-public class Barrier extends Apple{
+public class Barrier{
 
-    public Barrier(int x1, int y1){
-        super(x1,y1);
+    private int x;
+    private int y;
+    public Barrier(int x1, int y1,Graphics g){
+        x = x1;
+        y = y1;
+        draw(g);
     }
 
-    @Override
     public void draw(Graphics g){
         g.setColor(Color.GRAY);
-        g.fillRect(getX(),getY(),50,50);
+        g.fillRect(x,y,25,25);
     }
-
 
 
 }
